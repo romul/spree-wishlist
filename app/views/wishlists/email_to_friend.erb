@@ -1,0 +1,14 @@
+<h1><%= t("email_to_friend") %></h1>
+<%= form_tag do %>
+  <%= label_tag :email, t(:email) %><br />
+  <%= text_field_tag :email, params[:email] %><br />
+  <%= label_tag :subject, t(:subject) %><br />
+  <%= text_field_tag :subject, params[:subject] %><br />
+  <%= label_tag :wishlist_sender_name, t(:wishlist_sender_name) %><br />
+  <%= text_field_tag :sender_name, params[:sender_name] %><br />
+  <%= label_tag :wishlist_recipients_name, t(:wishlist_recipients_name) %><br />
+  <%= text_field_tag :recipients_name, params[:recipients_name] %><br />
+  <%= label_tag :message, t(:message) %><br />
+  <%= text_area_tag :message, params[:message], :rows => 10, :cols => 25 %><br />
+  <%= submit_tag t(:send_wishlist) %>
+<% end -%>
