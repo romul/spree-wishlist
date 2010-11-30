@@ -1,4 +1,4 @@
-class WishlistsController < ApplicationController
+class WishlistsController < Spree::BaseController
   resource_controller
   helper :products
   
@@ -11,6 +11,18 @@ class WishlistsController < ApplicationController
     render :js => "alert('#{t :updated_successfully}');"
   }
   
+  def email_to_friend
+    @wishlist = object
+    if request.post?
+      if params[:email].blank?
+        flash[:error] = t('email_address_missing')
+      else
+        WishlistMailer.email_wishlist_to_friend(current_user, @wishlist, params).deliver
+        flash[:notice] = t('wishlist_email_sent')
+        redirect_to wishlist_path(@wishlist)
+      end
+    end
+  end
   private
 
     def object

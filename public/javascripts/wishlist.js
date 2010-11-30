@@ -9,6 +9,7 @@ $("#new_wished_product").submit(function() {
 
 $(".ajax_form").submit(function() {
 	$.post($(this).attr("action"), $(this).serialize(), null, "script");
+	alert('Wurde zur Wunschliste hinzugefügt')
 	return false;
 });
 

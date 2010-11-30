@@ -1,3 +1,0 @@
-= Wishlist
-
-Description goes here
